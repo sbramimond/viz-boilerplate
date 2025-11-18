@@ -1,11 +1,11 @@
 import * as THREE from 'three';
-// import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
 interface ICameraData {
     position: number[];
     rotation: number[];
 }
 
+let threeChannel = new BroadcastChannel('THREE:threeChannel');
 let camera = null;
 
 let createRender = (canvas) => {
@@ -18,6 +18,7 @@ let createRender = (canvas) => {
     let renderer = new THREE.WebGLRenderer({antialias: true, canvas});
 
     renderer.setAnimationLoop( animate );
+    renderer.setPixelRatio(2);
 
     let geometry = new THREE.BoxGeometry( 1, 1, 1 );
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -34,11 +35,12 @@ let createRender = (canvas) => {
 }
 
 self.onmessage = function ({data: {canvas = null, type = '', data = {}}}) {
-
     if(canvas) {
         createRender(canvas);
     }
+};
 
+threeChannel.onmessage = function ({data: {type = '', data = {}}}) {
     if (type === 'cameraUpdate')  {
         let {position = [], rotation = []} = data;
 

@@ -1,7 +1,19 @@
 import * as echarts from 'echarts';
 
 self.onmessage = async ({data: {canvas = null}}) => {
-    let chart = echarts.init(canvas);
+
+    // canvas.width = canvas.width * 2;
+    // canvas.height = canvas.height * 2;
+
+    let chart = echarts.init(
+        canvas,
+        null,
+        {
+            devicePixelRatio: 2,
+            width: canvas.width,
+            height: canvas.height
+        }
+    );
 
     let option = {
         title: {

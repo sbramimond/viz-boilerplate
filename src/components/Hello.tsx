@@ -6,6 +6,8 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 let chartworker = new Worker(new URL('../worker/chart.worker.ts', import.meta.url));
 let threeWorker = new Worker(new URL('../worker/three.worker.ts', import.meta.url));
 
+let threeChannel = new BroadcastChannel('THREE:threeChannel');
+
 export interface HelloProps {
     compiler?: string;
     framework?: string;
@@ -53,7 +55,7 @@ export default ({compiler = 'TypeScript', framework = 'react'}: HelloProps) => {
             //     rotation: camera.rotation.toArray(),
             // };
 
-            threeWorker.postMessage({
+            threeChannel.postMessage({
                 type: 'cameraUpdate',
                 data: {
                     position: camera.position.toArray(),
@@ -84,6 +86,7 @@ export default ({compiler = 'TypeScript', framework = 'react'}: HelloProps) => {
             ref={canvasRef}
             width={400}
             height={400}
+            style={{width: '400px', height: '400px'}}
         >
         </canvas>
 
@@ -91,6 +94,7 @@ export default ({compiler = 'TypeScript', framework = 'react'}: HelloProps) => {
             ref={threeRef}
             width={400}
             height={400}
+            style={{width: '400px', height: '400px'}}
         >
         </canvas>
 
@@ -99,7 +103,7 @@ export default ({compiler = 'TypeScript', framework = 'react'}: HelloProps) => {
             width={400}
             height={400}
             style={{
-                border: 'solid 1px #0000ff'
+                border: 'solid 1px #0000ff',
             }}
         >
         </canvas>
