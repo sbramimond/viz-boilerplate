@@ -5,7 +5,7 @@ import * as THREE from 'three';
 //     rotation: number[];
 // }
 
-const ab = 1;
+const ab = 1
 console.log(ab);
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
