@@ -51,7 +51,7 @@
             "jsxQuoteStyle": "double",
             "quoteProperties": "asNeeded",
             "arrowParentheses": "always",
-            "bracketSpacing": true,
+            "bracketSpacing": false,
             "bracketSameLine": false,
             "quoteStyle": "single",
             "attributePosition": "auto",
