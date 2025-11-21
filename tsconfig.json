@@ -38,7 +38,7 @@
     // "allowSyntheticDefaultImports": true,
     "skipDefaultLibCheck": true,
     "allowJs": true,
-
+    "allowUmdGlobalAccess": true,
 
     // Style Options
     // "noImplicitReturns": true,
