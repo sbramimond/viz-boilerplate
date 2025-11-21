@@ -14,19 +14,25 @@ let createRender = (canvas) => {
 
     camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1000 );
     camera.position.set(0, 0, 10);
+    camera.up.set(0, 0, 1);
+    // camera.lookAt(0, 0, 0);
 
     let renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
 
     renderer.setPixelRatio(2);
     renderer.setAnimationLoop(animate);
 
+    let axeHelper = new THREE.AxesHelper( 50 );
+    let gridHelper = new THREE.GridHelper( 100, 20 );
+
     let geometry = new THREE.BoxGeometry(1, 1, 1);
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     let cube = new THREE.Mesh(geometry, material);
-
     cube.position.set(0, 0, 0);
 
     scene.add(cube);
+    scene.add( axeHelper );
+    scene.add( gridHelper );
 
     function animate() {
         cube.rotation.x += 0.01;
