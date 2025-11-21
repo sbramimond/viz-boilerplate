@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 
 import * as Three from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
 let chartworker = new Worker(new URL('../worker/chart.worker.ts', import.meta.url));
 let threeWorker = new Worker(new URL('../worker/three.worker.ts', import.meta.url));
@@ -13,7 +13,7 @@ let threeChannel = new BroadcastChannel('THREE:threeChannel');
 // }
 
 export default () => {
-    let x: object = { a: 1 };
+    let x: object = {a: 1};
     let y: object = (n: number) => n + 1;
     let canvasRef = useRef(null);
     let threeRef = useRef(null);
@@ -25,7 +25,7 @@ export default () => {
         }
 
         let canvas = copyRef.current;
-        let { width, height } = canvas;
+        let {width, height} = canvas;
 
         let scene = new Three.Scene();
         let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
@@ -89,10 +89,10 @@ export default () => {
         }
 
         let chartOffscreen = canvasRef.current.transferControlToOffscreen();
-        chartworker.postMessage({ canvas: chartOffscreen }, [chartOffscreen]);
+        chartworker.postMessage({canvas: chartOffscreen}, [chartOffscreen]);
 
         let threeOffscreen = threeRef.current.transferControlToOffscreen();
-        threeWorker.postMessage({ canvas: threeOffscreen }, [threeOffscreen]);
+        threeWorker.postMessage({canvas: threeOffscreen}, [threeOffscreen]);
     }, []);
 
     return (
@@ -131,4 +131,3 @@ export default () => {
         </>
     );
 };
-
