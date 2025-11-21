@@ -1,7 +1,6 @@
+import { Button, Result } from 'antd';
 import React from 'react';
 import { Link } from 'react-router';
-
-import { Button, Result } from 'antd';
 
 export default function NotFound(): React.ReactElement {
     return (

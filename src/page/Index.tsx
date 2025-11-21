@@ -12,15 +12,12 @@ let threeWorker = new Worker(
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 
-export interface HelloProps {
-    compiler?: string;
-    framework?: string;
-}
+// export interface HelloProps {
+//     compiler?: string;
+//     framework?: string;
+// }
 
-export default ({
-    compiler = 'TypeScript',
-    framework = 'react',
-}: HelloProps) => {
+export default () => {
     let x: object = { a: 1 };
     let y: object = (n: number) => n + 1;
     let canvasRef = useRef(null);

@@ -3,14 +3,14 @@ import React, { useEffect, useRef } from 'react';
 import * as Three from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-let chartworker = new Worker(
+const CHARTWORKER = new Worker(
     new URL('../worker/chart.worker.ts', import.meta.url)
 );
-let threeWorker = new Worker(
+const THREE_WORKER = new Worker(
     new URL('../worker/three.worker.ts', import.meta.url)
 );
 
-let threeChannel = new BroadcastChannel('THREE:threeChannel');
+const THREE_CHANNEL = new BroadcastChannel('THREE:threeChannel');
 
 export interface HelloProps {
     compiler?: string;
@@ -21,103 +21,108 @@ export default ({
     compiler = 'TypeScript',
     framework = 'react',
 }: HelloProps) => {
-    let x: object = { a: 1 };
-    let y: object = (n: number) => n + 1;
-    let canvasRef = useRef(null);
-    let threeRef = useRef(null);
-    let copyRef = useRef(null);
+    const X: object = { a: 1 };
+    const Y: object = (n: number) => n + 1;
+    const CANVAS_REF = useRef(null);
+    const THREE_REF = useRef(null);
+    const COPY_REF = useRef(null);
 
     useEffect(() => {
-        if (!copyRef?.current) {
+        if (!COPY_REF?.current) {
             return;
         }
 
-        let canvas = copyRef.current;
-        let { width, height } = canvas;
+        const CANVAS = COPY_REF.current;
+        const { width, height } = CANVAS;
 
-        let scene = new Three.Scene();
-        let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
-        let renderer = new Three.WebGLRenderer({ antialias: true, canvas });
+        const SCENE = new Three.Scene();
+        const CAMERA = new Three.PerspectiveCamera(75, width / height, 1, 1000);
+        const RENDERER = new Three.WebGLRenderer({
+            antialias: true,
+            canvas: CANVAS,
+        });
 
-        camera.position.set(0, 0, 10);
-        renderer.setSize(width, height);
-        renderer.setClearColor(0xff0000, 1);
-        renderer.render(scene, camera);
+        CAMERA.position.set(0, 0, 10);
+        RENDERER.setSize(width, height);
+        RENDERER.setClearColor(0xff0000, 1);
+        RENDERER.render(SCENE, CAMERA);
 
-        let controls = new OrbitControls(camera, renderer.domElement);
+        const CONTROLS = new OrbitControls(CAMERA, RENDERER.domElement);
 
-        controls.update();
+        CONTROLS.update();
 
         function animate() {
-            controls.update();
-            renderer.render(scene, camera);
+            CONTROLS.update();
+            RENDERER.render(SCENE, CAMERA);
         }
 
-        renderer.setAnimationLoop(animate);
+        RENDERER.setAnimationLoop(animate);
 
-        controls.addEventListener('change', () => {
-            threeChannel.postMessage({
+        CONTROLS.addEventListener('change', () => {
+            THREE_CHANNEL.postMessage({
                 type: 'cameraUpdate',
                 data: {
-                    position: camera.position.toArray(),
-                    rotation: camera.rotation.toArray(),
-                    target: controls.target.toArray(),
+                    position: CAMERA.position.toArray(),
+                    rotation: CAMERA.rotation.toArray(),
+                    target: CONTROLS.target.toArray(),
                 },
             });
         });
 
-        let handleClick = (e: MouseEvent) => {
-            let rect = copyRef.current.getBoundingClientRect();
+        const HANDLE_CLICK = (e: MouseEvent) => {
+            const RECT = COPY_REF.current.getBoundingClientRect();
 
-            threeChannel.postMessage({
+            THREE_CHANNEL.postMessage({
                 type: 'THREE:click',
                 data: {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
+                    x: e.clientX - RECT.left,
+                    y: e.clientY - RECT.top,
                 },
             });
         };
 
-        copyRef.current.onclick = handleClick;
+        COPY_REF.current.onclick = HANDLE_CLICK;
 
         return () => {
-            copyRef.current.onclick = null;
+            COPY_REF.current.onclick = null;
         };
     }, []);
 
     useEffect(() => {
-        if (!canvasRef?.current || !threeRef?.current) {
+        if (!CANVAS_REF?.current || !THREE_REF?.current) {
             return;
         }
 
-        let chartOffscreen = canvasRef.current.transferControlToOffscreen();
-        chartworker.postMessage({ canvas: chartOffscreen }, [chartOffscreen]);
+        const CHART_OFFSCREEN = CANVAS_REF.current.transferControlToOffscreen();
+        CHARTWORKER.postMessage({ canvas: CHART_OFFSCREEN }, [CHART_OFFSCREEN]);
 
-        let threeOffscreen = threeRef.current.transferControlToOffscreen();
-        threeWorker.postMessage({ canvas: threeOffscreen }, [threeOffscreen]);
+        const THREE_OFFSCREEN = THREE_REF.current.transferControlToOffscreen();
+        THREE_WORKER.postMessage({ canvas: THREE_OFFSCREEN }, [
+            THREE_OFFSCREEN,
+        ]);
     }, []);
 
     return (
         <>
             <h1>
-                Hello from {x.toString()} and {y.toString()} !
+                Hello from {X.toString()} and {Y.toString()} !
             </h1>
             <canvas
-                ref={canvasRef}
+                ref={CANVAS_REF}
                 width={400}
                 height={400}
                 style={{ width: '400px', height: '400px' }}
             ></canvas>
 
             <canvas
-                ref={threeRef}
+                ref={THREE_REF}
                 width={400}
                 height={400}
                 style={{ width: '400px', height: '400px' }}
             ></canvas>
 
             <canvas
-                ref={copyRef}
+                ref={COPY_REF}
                 width={400}
                 height={400}
                 style={{
