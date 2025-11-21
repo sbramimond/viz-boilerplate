@@ -51,7 +51,7 @@
     // Recommended Options
     "strict": false,
 
-    "jsx": "react",
+    "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,

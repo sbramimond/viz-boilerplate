@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import IndexPage from '@/page/Index';
 import NotFound from '@/page/NotFound';
