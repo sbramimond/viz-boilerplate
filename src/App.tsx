@@ -1,7 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route  } from 'react-router';
 
-import Hello from './component/Hello';
+import IndexPage from '@/page/Index';
+import NotFound from '@/page/NotFound';
+
+// let IndexPage = lazy(() => import('@/page/Index'));
+// let NotFound = lazy(() => import('@/page/NotFound'));
 
 export default (): React.ReactElement => {
-    return <Hello />;
+    return (
+        <>
+            <Router>
+                <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<IndexPage />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Router>
+        </>
+    );
 };

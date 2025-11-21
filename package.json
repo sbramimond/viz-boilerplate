@@ -5,7 +5,7 @@
     "main": "./dist/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "cross-env NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -w --config ./build/webpack.config.js",
+        "dev": "cross-env NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./build/webpack.config.js",
         "prepare": "husky",
         "lint:staged": "biome check --staged --write ./src/**/*.{js,ts,tsx}"
     },
@@ -21,6 +21,7 @@
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
         "react-router": "^7.9.6",
+        "react-router-dom": "^7.9.6",
         "react-transform-hmr": "^1.0.4",
         "three": "^0.181.2",
         "zustand": "^5.0.8"
@@ -41,6 +42,7 @@
         "@types/webworker": "^0.0.43",
         "babel-loader": "^10.0.0",
         "babel-plugin-react-transform": "^3.0.0",
+        "clean-webpack-plugin": "^4.0.0",
         "csstype": "^3.2.3",
         "html-webpack-plugin": "^5.6.5",
         "husky": "^9.1.7",

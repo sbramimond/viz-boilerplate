@@ -1,21 +1,34 @@
+let path = require('path');
+
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+let { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+let resolve = dir => path.join(process.cwd(), dir);
 
 module.exports = {
-    mode: "development",
-    entry: "/src/index.tsx",
+    mode: 'development',
+    entry: '/src/index.tsx',
     output: {
-        filename: "bundle.js",
+        filename: 'bundle.js',
         globalObject: 'this',
         umdNamedDefine: true,
+        publicPath: '/'
     },
     node: { global: true },
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: 'source-map',
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+        alias: {
+            static: resolve('/static'),
+            assets: resolve('/assets'),
+            '@': resolve('src')
+        },
+        modules: [resolve('/src'), 'node_modules'],
+        mainFiles: ['main', 'index'],
     },
 
     module: {
@@ -24,15 +37,15 @@ module.exports = {
             { test: /.worker.ts$/, type: 'javascript/auto' },
             {
                 test: /\.([cm]?ts|tsx)$/,
-                loader: "ts-loader",
+                loader: 'ts-loader',
                 options: {
-                    configFile: "tsconfig.json",
+                    configFile: 'tsconfig.json',
                     transpileOnly: true
                 }
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
             {
                 test: /.(ts|tsx)$/,
                 exclude: /node_modules/,
@@ -51,12 +64,12 @@ module.exports = {
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
     // externals: {
-    //     "react": "React",
-    //     "react-dom": "ReactDOM"
+    //     'react': 'React',
+    //     'react-dom': 'ReactDOM'
     // },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html",
+            template: './src/index.html',
             fileName: 'index.html',
             inject: true
         }),
@@ -67,13 +80,14 @@ module.exports = {
             global: function() {
                 return this;
             }
-        })
+        }),
+        new CleanWebpackPlugin(),
     ],
     devServer: {
         hot: true,
         compress: false,
         liveReload: true,
+        historyApiFallback: true
     },
-    watch: true,
     // stats: 'verbose',
 };
