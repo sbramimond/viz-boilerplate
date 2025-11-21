@@ -84,10 +84,19 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     devServer: {
-        hot: true,
+        client: {
+            // progress: true,
+            logging: 'error',
+            overlay: true,
+        },
+        hot: false,
         compress: false,
         liveReload: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        devMiddleware: {
+            writeToDisk: true
+        },
+        watchFiles: ['src/**/*.worker.ts'],
     },
     // stats: 'verbose',
 };
