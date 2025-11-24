@@ -30,7 +30,6 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    // "skipLibCheck": true,
     "noUnusedLocals": false,
     "downlevelIteration": true,
     // "strict": true,

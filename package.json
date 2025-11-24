@@ -2,7 +2,6 @@
     "name": "type-script",
     "version": "1.0.0",
     "description": "",
-    "main": "./dist/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "cross-env NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./build/webpack.config.js",

@@ -7,5 +7,6 @@ function Index(): React.ReactElement{
     return <App />;
 }
 
-const root = createRoot(document.getElementById('root'));
+let root = createRoot(document.getElementById('root'));
+
 root.render(<Index />);
