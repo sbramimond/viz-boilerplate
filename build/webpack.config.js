@@ -9,15 +9,16 @@ let resolve = dir => path.join(process.cwd(), dir);
 module.exports = {
     mode: 'development',
     entry: './src/index.tsx',
+    cache: true,
     experiments: {
         outputModule: true, // Enable ECMAScript Module output
     },
     output: {
-        filename: '[name].[contenthash:5].js',
-        chunkFilename: '[id].[contenthash:5].chunk.js',
+        filename: '[contenthash:8].js',
+        chunkFilename: '[contenthash:8].chunk.js',
         globalObject: 'this',
         umdNamedDefine: true,
-        publicPath: '/',
+        path: resolve('dist'),
         module: true,
     },
     node: { global: true },
@@ -25,6 +26,13 @@ module.exports = {
     devtool: 'source-map',
 
     optimization: {
+        mangleWasmImports: true,
+        concatenateModules: true,
+        runtimeChunk: true,
+        noEmitOnErrors: true,
+        removeAvailableModules: true,
+        removeEmptyChunks: true,
+        mergeDuplicateChunks: true,
         splitChunks: {
             chunks: 'all',
             minSize: 100000,
@@ -88,29 +96,28 @@ module.exports = {
 
     module: {
         rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { test: /.worker.ts$/, type: 'javascript/auto' },
             {
-                test: /\.([cm]?ts|tsx)$/,
-                loader: 'ts-loader',
-                options: {
-                    configFile: 'tsconfig.json',
-                    transpileOnly: true
-                }
+                test: /.worker.ts$/,
+                type: 'javascript/auto',
             },
-
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
             {
-                test: /.(ts|tsx)$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'],
-                        plugins: []
-                    }
-                }
+                include: path.resolve('src'),
+                use: [
+                    'babel-loader',
+                    // 'thread-loader',
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: require('os').cpus().length - 1,
+                            workerParallelJobs: 50,
+                            poolTimeout: 500,
+                            poolRespawn: false,
+                        }
+                    },
+                ],
             }
         ]
     },
