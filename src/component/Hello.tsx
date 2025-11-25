@@ -6,7 +6,7 @@ export interface HelloProps {
 export default ({compiler = '', framework = ''}: HelloProps) => {
     return (
         <h1>
-            Hello from {compiler} and {framework} !
+           Hello from {compiler} and {framework} !
         </h1>
     );
 };

@@ -1,9 +1,11 @@
 import * as echarts from 'echarts';
 
+if (typeof (self as any).global === 'undefined') {
+    (self as any).global = self;
+}
+
 self.onmessage = async ({data: {canvas = null}}) => {
-    // canvas.width = canvas.width * 2;
-    // canvas.height = canvas.height * 2;
-    // console.log('canvas', canvas);
+    if (!canvas) return;
 
     let chart = echarts.init(canvas, null, {
         devicePixelRatio: 2,
@@ -49,8 +51,5 @@ self.onmessage = async ({data: {canvas = null}}) => {
         ],
     };
 
-    // 使用刚指定的配置项和数据显示图表。
     chart.setOption(option);
 };
-
-export default {};

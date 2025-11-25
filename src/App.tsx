@@ -12,6 +12,7 @@ import NotFound from '@/page/NotFound';
 // let NotFound = lazy(() => import('@/page/NotFound'));
 
 export default (): React.ReactElement => {
+
     return (
         <Router>
             <Routes

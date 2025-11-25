@@ -1,23 +1,23 @@
-import * as Three from 'three';
-
-// interface ICameraData {
-//     position: number[];
-//     rotation: number[];
-// }
+import * as THREE from 'three';
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 let camera = null;
 
+self.onmessage = async ({data}) => {
+    if (data.type === 'canvas' && data.canvas) {
+        createRender(data.canvas);
+    }
+};
+
 let createRender = (canvas) => {
     let {width, height} = canvas;
-    let scene = new Three.Scene();
+    let scene = new THREE.Scene();
 
-    camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
+    camera = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
     camera.position.set(0, 0, 10);
     camera.up.set(0, 0, 1);
-    // camera.lookAt(0, 0, 0);
 
-    let renderer = new Three.WebGLRenderer({
+    let renderer = new THREE.WebGLRenderer({
         antialias: true,
         canvas,
     });
@@ -25,14 +25,14 @@ let createRender = (canvas) => {
     renderer.setPixelRatio(2);
     renderer.setAnimationLoop(animate);
 
-    let axeHelper = new Three.AxesHelper(50);
-    let gridHelper = new Three.GridHelper(100, 20);
+    let axeHelper = new THREE.AxesHelper(50);
+    let gridHelper = new THREE.GridHelper(100, 20);
 
-    let geometry = new Three.BoxGeometry(1, 1, 1);
-    let material = new Three.MeshBasicMaterial({
+    let geometry = new THREE.BoxGeometry(1, 1, 1);
+    let material = new THREE.MeshBasicMaterial({
         color: 0x00ff00,
     });
-    let cube = new Three.Mesh(geometry, material);
+    let cube = new THREE.Mesh(geometry, material);
     cube.position.set(0, 0, 0);
 
     scene.add(cube);
@@ -46,26 +46,19 @@ let createRender = (canvas) => {
     }
 };
 
-self.onmessage = ({data: {canvas = null}}) => {
-    if (canvas) {
-        createRender(canvas);
-    }
-};
-
 threeChannel.onmessage = ({data: {type = '', data = {}}}) => {
+    if (!camera) return;
+
     if (type === 'cameraUpdate') {
         let {position = [], rotation = []} = data;
-
         camera.position.fromArray(position);
         camera.rotation.fromArray(rotation);
-
         return;
     }
 
     if (type === 'THREE:click') {
         let {x = 0, y = 0} = data;
-        let vector = new Three.Vector3(x, y, 0);
-
+        let vector = new THREE.Vector3(x, y, 0);
         console.log(vector.unproject(camera));
     }
 };
