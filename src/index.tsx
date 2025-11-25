@@ -1,8 +1,8 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
 import App from './App';
 
-function Index(): React.ReactElement{
+function Index(): React.ReactElement {
     return <App />;
 }
 

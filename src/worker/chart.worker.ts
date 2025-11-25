@@ -1,7 +1,13 @@
 import * as echarts from 'echarts';
+// 在Web Worker中定义global变量，ECharts需要这个
+interface ExtendedSelf extends WindowOrWorkerGlobalScope {
+    global: typeof globalThis;
+}
 
-if (typeof (self as any).global === 'undefined') {
-    (self as any).global = self;
+declare let global: typeof globalThis;
+
+if (typeof global === 'undefined') {
+    (self as unknown as ExtendedSelf).global = self;
 }
 
 self.onmessage = async ({data: {canvas = null}}) => {
