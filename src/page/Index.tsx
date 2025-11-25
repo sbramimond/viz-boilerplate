@@ -15,71 +15,71 @@ let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();
 
 export default () => {
-    const COPY_REF = useRef<HTMLCanvasElement>(null);
+    const copyRef = useRef<HTMLCanvasElement>(null);
 
     // 使用自定义Hook管理Web Worker
     // let Chart = useCanvasWorker('@/worker/chart.worker.ts?worker');
     // useCanvasWorker('@/worker/three.worker.ts?worker', threeRef);
 
     useEffect(() => {
-        if (!COPY_REF?.current) {
+        if (!copyRef?.current) {
             return () => {};
         }
 
-        const CANVAS = COPY_REF.current;
-        const {width, height} = CANVAS;
+        const canvas = copyRef.current;
+        const {width, height} = canvas;
 
-        const SCENE = new Three.Scene();
-        const CAMERA = new Three.PerspectiveCamera(75, width / height, 1, 1000);
-        const RENDERER = new Three.WebGLRenderer({
+        const scene = new Three.Scene();
+        const camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
+        const renderer = new Three.WebGLRenderer({
             antialias: true,
-            canvas: CANVAS,
+            canvas,
         });
 
-        CAMERA.position.set(0, 0, 10);
-        CAMERA.up.set(0, 0, 1);
+        camera.position.set(0, 0, 10);
+        camera.up.set(0, 0, 1);
 
-        RENDERER.setSize(width, height);
-        RENDERER.setClearColor(0xff0000, 1);
-        RENDERER.render(SCENE, CAMERA);
+        renderer.setSize(width, height);
+        renderer.setClearColor(0xff0000, 1);
+        renderer.render(scene, camera);
 
-        const CONTROLS = new OrbitControls(CAMERA, RENDERER.domElement);
-        CONTROLS.update();
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.update();
 
         function animate() {
-            CONTROLS.update();
-            RENDERER.render(SCENE, CAMERA);
+            controls.update();
+            renderer.render(scene, camera);
         }
 
-        RENDERER.setAnimationLoop(animate);
+        renderer.setAnimationLoop(animate);
 
-        CONTROLS.addEventListener('change', () => {
+        controls.addEventListener('change', () => {
             threeChannel.postMessage({
                 type: 'cameraUpdate',
                 data: {
-                    position: CAMERA.position.toArray(),
-                    rotation: CAMERA.rotation.toArray(),
-                    target: CONTROLS.target.toArray(),
+                    position: camera.position.toArray(),
+                    rotation: camera.rotation.toArray(),
+                    target: controls.target.toArray(),
                 },
             });
         });
 
-        const HANDLE_CLICK = (e: MouseEvent) => {
-            const RECT = COPY_REF.current!.getBoundingClientRect();
+        const handleClick = (e: MouseEvent) => {
+            const rect = copyRef.current!.getBoundingClientRect();
             threeChannel.postMessage({
                 type: 'THREE:click',
                 data: {
-                    x: e.clientX - RECT.left,
-                    y: e.clientY - RECT.top,
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top,
                 },
             });
         };
 
-        COPY_REF.current.onclick = HANDLE_CLICK;
+        copyRef.current.onclick = handleClick;
 
         return () => {
-            if (COPY_REF.current) {
-                COPY_REF.current.onclick = null;
+            if (copyRef.current) {
+                copyRef.current.onclick = null;
             }
         };
     }, []);
