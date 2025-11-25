@@ -1,7 +1,6 @@
-declare module '*.worker.ts' {
-    class WebpackWorker extends Worker {
-        constructor();
+declare module '*?worker' {
+    const workerConstructor: {
+        new (): Worker
     }
-    export default WebpackWorker;
+    export default workerConstructor
 }
-

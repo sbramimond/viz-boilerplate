@@ -11,7 +11,9 @@ if (typeof global === 'undefined') {
 }
 
 self.onmessage = async ({data: {canvas = null}}) => {
-    if (!canvas) return;
+    if (!canvas) {
+        return;
+    }
 
     let chart = echarts.init(canvas, null, {
         devicePixelRatio: 2,
@@ -59,3 +61,5 @@ self.onmessage = async ({data: {canvas = null}}) => {
 
     chart.setOption(option);
 };
+
+export default {};

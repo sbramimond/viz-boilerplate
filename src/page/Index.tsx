@@ -3,104 +3,110 @@ import {useEffect, useRef} from 'react';
 import * as Three from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
-import Hello from '@/component/Hello';
+import Hello from '@/component/index/Hello';
+import OffscreenCanvas from '@/component/OffscreenCanvas';
 
-// 使用Vite的特殊worker导入语法
+let threeChannel = new BroadcastChannel('THREE:threeChannel');
+
 import ChartWorker from '@/worker/chart.worker.ts?worker';
 import ThreeWorker from '@/worker/three.worker.ts?worker';
 
 let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();
 
-let threeChannel = new BroadcastChannel('THREE:threeChannel');
-
 export default () => {
-    let canvasRef = useRef(null);
-    let threeRef = useRef(null);
-    let copyRef = useRef(null);
+    const COPY_REF = useRef<HTMLCanvasElement>(null);
+
+    // 使用自定义Hook管理Web Worker
+    // let Chart = useCanvasWorker('@/worker/chart.worker.ts?worker');
+    // useCanvasWorker('@/worker/three.worker.ts?worker', threeRef);
 
     useEffect(() => {
-        if (!copyRef?.current) {
-            return;
+        if (!COPY_REF?.current) {
+            return () => {};
         }
 
-        let canvas = copyRef.current;
-        let {width, height} = canvas;
+        const CANVAS = COPY_REF.current;
+        const {width, height} = CANVAS;
 
-        let scene = new Three.Scene();
-        let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
-        let renderer = new Three.WebGLRenderer({
+        const SCENE = new Three.Scene();
+        const CAMERA = new Three.PerspectiveCamera(75, width / height, 1, 1000);
+        const RENDERER = new Three.WebGLRenderer({
             antialias: true,
-            canvas,
+            canvas: CANVAS,
         });
 
-        camera.position.set(0, 0, 10);
-        camera.up.set(0, 0, 1);
+        CAMERA.position.set(0, 0, 10);
+        CAMERA.up.set(0, 0, 1);
 
-        renderer.setSize(width, height);
-        renderer.setClearColor(0xff0000, 1);
-        renderer.render(scene, camera);
+        RENDERER.setSize(width, height);
+        RENDERER.setClearColor(0xff0000, 1);
+        RENDERER.render(SCENE, CAMERA);
 
-        let controls = new OrbitControls(camera, renderer.domElement);
-        controls.update();
+        const CONTROLS = new OrbitControls(CAMERA, RENDERER.domElement);
+        CONTROLS.update();
 
         function animate() {
-            controls.update();
-            renderer.render(scene, camera);
+            CONTROLS.update();
+            RENDERER.render(SCENE, CAMERA);
         }
 
-        renderer.setAnimationLoop(animate);
+        RENDERER.setAnimationLoop(animate);
 
-        controls.addEventListener('change', () => {
+        CONTROLS.addEventListener('change', () => {
             threeChannel.postMessage({
                 type: 'cameraUpdate',
                 data: {
-                    position: camera.position.toArray(),
-                    rotation: camera.rotation.toArray(),
-                    target: controls.target.toArray(),
+                    position: CAMERA.position.toArray(),
+                    rotation: CAMERA.rotation.toArray(),
+                    target: CONTROLS.target.toArray(),
                 },
             });
         });
 
-        let handleClick = (e: MouseEvent) => {
-            let rect = copyRef.current.getBoundingClientRect();
+        const HANDLE_CLICK = (e: MouseEvent) => {
+            const RECT = COPY_REF.current!.getBoundingClientRect();
             threeChannel.postMessage({
                 type: 'THREE:click',
                 data: {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
+                    x: e.clientX - RECT.left,
+                    y: e.clientY - RECT.top,
                 },
             });
         };
 
-        copyRef.current.onclick = handleClick;
+        COPY_REF.current.onclick = HANDLE_CLICK;
 
         return () => {
-            copyRef.current.onclick = null;
+            if (COPY_REF.current) {
+                COPY_REF.current.onclick = null;
+            }
         };
-    }, []);
-
-    useEffect(() => {
-        if (!canvasRef?.current || !threeRef?.current) {
-            return;
-        }
-
-        let chartOffscreen = canvasRef.current.transferControlToOffscreen();
-        let threeOffscreen = threeRef.current.transferControlToOffscreen();
-
-        chartworker.postMessage({canvas: chartOffscreen}, [chartOffscreen]);
-
-        // 先初始化 Three.js，然后发送 canvas
-        threeWorker.postMessage({type: 'init-three'});
-        setTimeout(() => {
-            threeWorker.postMessage({type: 'canvas', canvas: threeOffscreen}, [threeOffscreen]);
-        }, 100);
     }, []);
 
     return (
         <>
             <Hello compiler="TypeScript" framework="React" />
-            <canvas
+
+            <OffscreenCanvas
+                worker={chartworker}
+                width={400}
+                height={400}
+                style={{
+                    width: '400px',
+                    height: '400px',
+                }}
+            />
+            <OffscreenCanvas
+                worker={threeWorker}
+                width={400}
+                height={400}
+                style={{
+                    width: '400px',
+                    height: '400px',
+                }}
+            />
+            {/* <canvas
                 ref={canvasRef}
                 width={400}
                 height={400}
@@ -127,7 +133,7 @@ export default () => {
                 style={{
                     border: 'solid 1px #0000ff',
                 }}
-            ></canvas>
+            ></canvas> */}
         </>
     );
 };

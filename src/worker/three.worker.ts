@@ -3,10 +3,12 @@ import * as Three from 'three';
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 let camera = null;
 
-self.onmessage = async ({data}) => {
-    if (data.type === 'canvas' && data.canvas) {
-        createRender(data.canvas);
+self.onmessage = async ({data: {canvas = null}}) => {
+    if (!canvas) {
+        return;
     }
+
+    createRender(canvas);
 };
 
 let createRender = (canvas) => {
@@ -62,3 +64,5 @@ threeChannel.onmessage = ({data: {type = '', data = {}}}) => {
         console.log(vector.unproject(camera));
     }
 };
+
+export default {};
