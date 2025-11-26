@@ -6,7 +6,7 @@ export default function (canvas: HTMLCanvasElement) {
     let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
 
     camera.position.set(0, 0, 10);
-    camera.up.set(0, 0, 1);
+    // camera.up.set(0, 0, 0);
 
     let renderer = new Three.WebGLRenderer({
         antialias: true,

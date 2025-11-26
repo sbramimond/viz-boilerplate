@@ -48,9 +48,16 @@ export default defineConfig({
     server: {
         port: 8080,
         open: true,
-        host: true
+        host: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:9200',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '/api')
+            },
+        }
     },
     optimizeDeps: {
-        include: ['react', 'react-dom']
+        include: ['react', 'react-dom', 'Sentry']
     }
 });

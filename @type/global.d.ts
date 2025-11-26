@@ -6,6 +6,7 @@ declare module '*.module.less' {
 declare global {
     interface Window {
         React: any;
+        Sentry: any;
     }
 }
 

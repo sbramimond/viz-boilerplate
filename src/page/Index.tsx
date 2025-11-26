@@ -1,4 +1,4 @@
-import {Col, Row} from 'antd';
+import {Col, Row, Button} from 'antd';
 import {useEffect, useRef} from 'react';
 
 import OffscreenCanvas from '@/component/OffscreenCanvas';
@@ -76,43 +76,49 @@ export default () => {
     }, []);
 
     return (
-        <Row>
-            <Col span={12}>
-                <OffscreenCanvas
-                    worker={chartworker}
-                    width={400}
-                    height={400}
-                    style={{
-                        width: '400px',
-                        height: '400px',
-                    }}
-                />
-            </Col>
-            <Col span={12}>
-                <div className={style['canvas-container']}>
-                    <canvas
-                        ref={copyRef}
-                        width={400}
-                        height={400}
-                        style={{
-                            border: 'solid 1px #0000ff',
-                            position: 'absolute',
-                            zIndex: 1,
-                        }}
-                    ></canvas>
+        <>
+            <Button type="primary" onClick={() => {
+                Sentry.captureMessage('用户尝试进行无效操作', 'warning');
+            }}>测试</Button>
+            <Row>
+                <Col span={12}>
                     <OffscreenCanvas
-                        worker={threeWorker}
+                        worker={chartworker}
                         width={400}
                         height={400}
                         style={{
                             width: '400px',
                             height: '400px',
-                            position: 'absolute',
-                            zIndex: 0,
                         }}
                     />
-                </div>
-            </Col>
-        </Row>
+                </Col>
+                <Col span={12}>
+                    <div className={style['canvas-container']}>
+                        <canvas
+                            ref={copyRef}
+                            width={400}
+                            height={400}
+                            style={{
+                                border: 'solid 1px #0000ff',
+                                position: 'absolute',
+                                zIndex: 1,
+                            }}
+                        ></canvas>
+                        <OffscreenCanvas
+                            worker={threeWorker}
+                            width={400}
+                            height={400}
+                            style={{
+                                width: '400px',
+                                height: '400px',
+                                position: 'absolute',
+                                zIndex: 0,
+                            }}
+                        />
+
+                    </div>
+                </Col>
+            </Row>
+        </>
     );
 };
