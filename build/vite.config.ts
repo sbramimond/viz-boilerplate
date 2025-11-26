@@ -1,17 +1,25 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import removeConsole from 'vite-plugin-remove-console';
+
 let resolve = (dir: string) => path.join(process.cwd(), dir);
 
 export default defineConfig({
     root: 'src',
     publicDir: resolve('public'),
-    plugins: [react()],
+    plugins: [
+        react(),
+        // 移除生产环境中的 console 语句
+        removeConsole({
+            // exclude: ['error', 'warn'] // 保留 error 和 warn 信息，仅移除 log 等其他 console 语句
+        })
+    ],
     resolve: {
         alias: {
-        '@': resolve('src'),
-        'static': resolve('static'),
-        'assets': resolve('assets')
+            '@': resolve('src'),
+            'static': resolve('static'),
+            'assets': resolve('assets')
         },
         extensions: ['.ts', '.tsx', '.js', '.json']
     },

@@ -72,6 +72,9 @@ importers:
       vite:
         specifier: ^6.0.7
         version: 6.4.1(@types/node@24.10.1)(less@4.4.2)(yaml@2.8.1)
+      vite-plugin-remove-console:
+        specifier: ^2.2.0
+        version: 2.2.0
 
 packages:
 
@@ -1445,6 +1448,9 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  vite-plugin-remove-console@2.2.0:
+    resolution: {integrity: sha512-qgjh5pz75MdE9Kzs8J0kBwaCfifHV0ezRbB9rpGsIOxam+ilcGV7WOk91vFJXquzRmiKrFh3Hxlh0JJWAmXTbQ==}
 
   vite@6.4.1:
     resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
@@ -2937,6 +2943,8 @@ snapshots:
       browserslist: 4.28.0
       escalade: 3.2.0
       picocolors: 1.1.1
+
+  vite-plugin-remove-console@2.2.0: {}
 
   vite@6.4.1(@types/node@24.10.1)(less@4.4.2)(yaml@2.8.1):
     dependencies:

@@ -37,6 +37,7 @@
         "husky": "^9.1.7",
         "less": "^4.4.2",
         "typescript": "^5.9.3",
-        "vite": "^6.0.7"
+        "vite": "^6.0.7",
+        "vite-plugin-remove-console": "^2.2.0"
     }
 }

@@ -13,7 +13,6 @@ import ThreeWorker from '@/worker/three.worker.ts?worker';
 
 import style from './index.module.less';
 
-console.log(style);
 let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();
 
