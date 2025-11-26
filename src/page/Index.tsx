@@ -1,7 +1,5 @@
 import {useEffect, useRef} from 'react';
 
-import * as Three from 'three';
-
 import Hello from '@/component/index/Hello';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
 
