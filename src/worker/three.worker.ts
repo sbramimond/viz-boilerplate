@@ -52,8 +52,8 @@ threeChannel.onmessage = ({data: {type = '', data = {}}}) => {
     }
 
     if (type === 'THREE:click') {
-        let {x = 0, y = 0} = data;
-        let vector = new Three.Vector3(x, y, 0);
+        // let {x = 0, y = 0} = data;
+        // let vector = new Three.Vector3(x, y, 0);
     }
 };
 

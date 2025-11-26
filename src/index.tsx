@@ -1,9 +1,7 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-
-import sentry from './sentry';
-
 import App from './App';
+import sentry from './sentry';
 import 'antd/dist/reset.css';
 
 sentry();
