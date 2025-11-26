@@ -15,7 +15,7 @@ let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();
 
 export default () => {
-    const copyRef = useRef<HTMLCanvasElement>(null);
+    let copyRef = useRef<HTMLCanvasElement>(null);
 
     // 使用自定义Hook管理Web Worker
     // let Chart = useCanvasWorker('@/worker/chart.worker.ts?worker');
@@ -26,12 +26,12 @@ export default () => {
             return () => {};
         }
 
-        const canvas = copyRef.current;
-        const {width, height} = canvas;
+        let canvas = copyRef.current;
+        let {width, height} = canvas;
 
-        const scene = new Three.Scene();
-        const camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
-        const renderer = new Three.WebGLRenderer({
+        let scene = new Three.Scene();
+        let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
+        let renderer = new Three.WebGLRenderer({
             antialias: true,
             canvas,
         });
@@ -43,7 +43,7 @@ export default () => {
         renderer.setClearColor(0xff0000, 1);
         renderer.render(scene, camera);
 
-        const controls = new OrbitControls(camera, renderer.domElement);
+        let controls = new OrbitControls(camera, renderer.domElement);
         controls.update();
 
         function animate() {
@@ -64,8 +64,8 @@ export default () => {
             });
         });
 
-        const handleClick = (e: MouseEvent) => {
-            const rect = copyRef.current!.getBoundingClientRect();
+        let handleClick = (e: MouseEvent) => {
+            let rect = copyRef.current!.getBoundingClientRect();
             threeChannel.postMessage({
                 type: 'THREE:click',
                 data: {

@@ -15,6 +15,15 @@ export default defineConfig({
         },
         extensions: ['.ts', '.tsx', '.js', '.json']
     },
+    css: {
+        preprocessorOptions: {
+            less: {
+                javascriptEnabled: true,
+                // 如果有全局的 Less 变量或混合，可以在这里导入
+                // additionalData: `@import "@/styles/variables.less";`
+            }
+        }
+    },
     build: {
         sourcemap: true,
         target: 'esnext',
