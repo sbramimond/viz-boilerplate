@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react';
 
-import { Col, Row } from 'antd';
+import {Col, Row} from 'antd';
 
 import OffscreenCanvas from '@/component/OffscreenCanvas';
 
@@ -13,7 +13,8 @@ import ChartWorker from '@/worker/chart.worker.ts?worker';
 import ThreeWorker from '@/worker/three.worker.ts?worker';
 
 import style from './index.module.less';
-console.log(style)
+
+console.log(style);
 let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();
 
@@ -77,44 +78,44 @@ export default () => {
 
     return (
         <>
-        <Row>
-            <Col span={12}>
-                <OffscreenCanvas
-                    worker={chartworker}
-                    width={400}
-                    height={400}
-                    style={{
-                        width: '400px',
-                        height: '400px',
-                    }}
-                />
-            </Col>
-            <Col span={12}>
-                <div className={style['canvas-container']}>
-                    <canvas
-                        ref={copyRef}
-                        width={400}
-                        height={400}
-                        style={{
-                            border: 'solid 1px #0000ff',
-                            position: 'absolute',
-                            zIndex: 1,
-                        }}
-                    ></canvas>
+            <Row>
+                <Col span={12}>
                     <OffscreenCanvas
-                        worker={threeWorker}
+                        worker={chartworker}
                         width={400}
                         height={400}
                         style={{
                             width: '400px',
                             height: '400px',
-                            position: 'absolute',
-                            zIndex: 0,
                         }}
                     />
-                    1
-                </div>
-            </Col>
+                </Col>
+                <Col span={12}>
+                    <div className={style['canvas-container']}>
+                        <canvas
+                            ref={copyRef}
+                            width={400}
+                            height={400}
+                            style={{
+                                border: 'solid 1px #0000ff',
+                                position: 'absolute',
+                                zIndex: 1,
+                            }}
+                        ></canvas>
+                        <OffscreenCanvas
+                            worker={threeWorker}
+                            width={400}
+                            height={400}
+                            style={{
+                                width: '400px',
+                                height: '400px',
+                                position: 'absolute',
+                                zIndex: 0,
+                            }}
+                        />
+                        1
+                    </div>
+                </Col>
             </Row>
         </>
     );

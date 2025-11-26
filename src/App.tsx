@@ -1,14 +1,14 @@
 import React from 'react';
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 
-import { Flex, Layout } from 'antd';
+import {Layout} from 'antd';
 
 import IndexPage from '@/page/Index';
 import NotFound from '@/page/NotFound';
 
 import Hello from '@/component/index/Hello';
 
-let { Header, Footer, Sider, Content } = Layout;
+let {Header, Footer, Content} = Layout;
 
 let layoutStyle = {
     borderRadius: 8,
@@ -42,7 +42,9 @@ export default (): React.ReactElement => {
     return (
         <Router>
             <Layout style={layoutStyle}>
-                <Header style={headerStyle}><Hello compiler="TypeScript" framework="React" /></Header>
+                <Header style={headerStyle}>
+                    <Hello compiler="TypeScript" framework="React" />
+                </Header>
                 <Content style={contentStyle}>
                     <Routes location={location} key={location.pathname}>
                         <Route path="/" element={<IndexPage />} />
