@@ -7,7 +7,7 @@ interface State {
     increment: () => void;
 }
 
-export let countSlice: SliceCreator<State> = (set, get, api) => ({
+export let countSlice: SliceCreator<State> = (set) => ({
     count: 1,
     increment: () => set((state) => ({count: state.count + 1})),
 });
