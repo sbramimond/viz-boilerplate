@@ -8,7 +8,7 @@ interface CountState {
 }
 
 interface DataState {
-    data: Record<string, any>;
+    data: Record<string, string>;
     request: () => Promise<void>;
 }
 
