@@ -2,6 +2,7 @@ import {Button, Col, Row} from 'antd';
 import {useEffect, useRef} from 'react';
 
 import OffscreenCanvas from '@/component/OffscreenCanvas';
+import Count from '@/component/index/Count';
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 
@@ -76,14 +77,7 @@ export default () => {
 
     return (
         <>
-            <Button
-                type="primary"
-                onClick={() => {
-                    Sentry.captureMessage('用户尝试进行无效操作', 'warning');
-                }}
-            >
-                测试
-            </Button>
+            <Count />
             <Row>
                 <Col span={12}>
                     <OffscreenCanvas
