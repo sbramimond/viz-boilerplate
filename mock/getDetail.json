@@ -1,0 +1,270 @@
+{
+	"error": 200,
+	"msg": "ok",
+	"ext": {
+		"s": 1596101626.3257,
+		"e": 1596101626.5261,
+		"d": 0.20038390159607
+	},
+	"log_id": "6694535435759501312",
+	"data": {
+		"fields": {
+			"task_id": {
+				"title": "任务id",
+				"width": 200
+			},
+			"status_str": "任务状态",
+			"task_create_user": "任务创建人",
+			"project_create_user": "任务负责人",
+			"firm": "所属项目组",
+			"project_id": "项目ID",
+			"project_name": "项目名称",
+			"progress": "标注中/待验收/已完成/完成占比",
+			"pic_num": "数据量",
+			"accept_seq_users": "验收员",
+			"pro_firm_number": "业务项目号",
+			"pro_firm_type": "业务项目类型",
+			"project_create_time": "任务提交日期",
+			"expect_finish_time": "期望返回日期",
+			"check_estimate_finish_time": "质检预估返回日期",
+			"delivered_time": "质检最终交付日期",
+			"accept_estimate_finish_time": "验收预估返回日期",
+			"real_finish_time": "验收完成时间",
+			"feedback": "使用反馈",
+			"comment": "备注",
+			"option": "操作"
+		},
+		"page": {
+			"res_num": 32
+		},
+		"detail": [
+			{
+				"task_id": {
+					"value": 1,
+					"link": "http://10.10.108.24:8080/data-label/task-management/detail?id=1",
+					"style": {
+						"type": "redpoint"
+					}
+				},
+				"sort": "5",
+				"status_str": {
+					"type": "text",
+					"value": "进行中",
+					"style": {
+						"type": "tag",
+						"color": "#BD5418"
+					}
+				},
+				"task_create_user": "system001",
+				"project_create_user": "system001",
+				"firm": "分类工具项目",
+				"project_id": {
+					"type": "link",
+					"value": "618",
+					"link": "http://10.10.108.24:8080/data-label/project-management/detail?user=2&id=618&monitor=1"
+				},
+				"project_name": "考核测试项目-人脸框+5点-副本",
+				"progress": "0/0/0/0%",
+				"pic_num": 81,
+				"accept_seq_users": "",
+				"pro_firm_number": "SI2018-R48",
+				"pro_firm_type": "车道线检测",
+				"project_create_time": "2020/07/30",
+				"expect_finish_time": "2020/07/30",
+				"check_estimate_finish_time": "",
+				"delivered_time": "",
+				"accept_estimate_finish_time": "",
+				"real_finish_time": "",
+				"feedback": null,
+				"comment": null,
+				"option": {
+					"type": "operation",
+					"buttons": [
+						{
+							"type": "formModal",
+							"value": "修改日期",
+							"url": "./api/v1/tasks/1",
+							"formElements": [
+								{
+									"type": "commonDate",
+									"displayName": "质检预估返回日期",
+									"name": "check_estimate_finish_time"
+								},
+								{
+									"type": "commonDate",
+									"defaultValue": "2020/07/30",
+									"displayName": "期望返回日期",
+									"name": "expect_finish_time",
+									"placeholder": "期望返回日期与任务关联"
+								},
+								{
+									"type": "commonDate",
+									"displayName": "验收预估返回日期",
+									"name": "accept_estimate_finish_time"
+								}
+							],
+							"method": "post"
+						},
+						{
+							"type": "formModal",
+							"value": "项目优先级",
+							"url": "./api/v1/task-projects/1",
+							"formElements": [
+								{
+									"type": "commonRate",
+									"displayName": "项目优先级",
+									"name": "sort",
+									"value": [
+										1,
+										2,
+										3,
+										4,
+										5
+									],
+									"defaultValue": "5",
+									"tip": "一星：排在最上方<br>五星：排在最下方"
+								}
+							],
+							"method": "post"
+						},
+						{
+							"type": "formModal",
+							"value": "修改备注",
+							"url": "./api/v1/task-projects/1",
+							"formElements": [
+								{
+									"type": "commonTextArea",
+									"displayName": "备注",
+									"name": "comment",
+									"placeholder": "最多可填300个字"
+								}
+							],
+							"method": "post"
+						}
+					],
+					"dropdown": true
+				}
+			},
+			{
+				"task_id": {
+					"type": "link",
+					"value": 1,
+					"link": "./about",
+					"style": {
+						"type": "redpoint"
+					}
+				},
+				"sort": "5",
+				"status_str": {
+					"type": "text",
+					"value": "进行中",
+					"style": {
+						"type": "tag",
+						"color": "#BD5418"
+					}
+				},
+				"task_create_user": "system001",
+				"project_create_user": "system001",
+				"firm": "分类工具项目",
+				"project_id": {
+					"type": "link",
+					"value": "611",
+					"link": "./project-management/detail?user=2&id=611&monitor=1"
+				},
+				"project_name": "标记打回-0715",
+				"progress": "0/0/0/0%",
+				"pic_num": 0,
+				"accept_seq_users": "",
+				"pro_firm_number": "SI2018-R48",
+				"pro_firm_type": "车道线检测",
+				"project_create_time": "2020/07/30",
+				"expect_finish_time": "2020/07/30",
+				"check_estimate_finish_time": "",
+				"delivered_time": "",
+				"accept_estimate_finish_time": "",
+				"real_finish_time": "",
+				"feedback": null,
+				"comment": null,
+				"option": {
+					"type": "operation",
+					"buttons": [
+						{
+							"type": "formModal",
+							"value": "修改日期",
+							"url": "./api/v1/tasks/1",
+							"formElements": [
+								{
+									"type": "commonDate",
+									"displayName": "质检预估返回日期",
+									"name": "check_estimate_finish_time"
+								},
+								{
+									"type": "commonDate",
+									"defaultValue": "2020/07/30",
+									"displayName": "期望返回日期",
+									"name": "expect_finish_time",
+									"placeholder": "期望返回日期与任务关联"
+								},
+								{
+									"type": "commonDate",
+									"displayName": "验收预估返回日期",
+									"name": "accept_estimate_finish_time"
+								}
+							],
+							"method": "post"
+						},
+						{
+							"type": "formModal",
+							"value": "项目优先级",
+							"url": "./api/v1/task-projects/1",
+							"formElements": [
+								{
+									"type": "commonRate",
+									"displayName": "项目优先级",
+									"name": "sort",
+									"value": [
+										1,
+										2,
+										3,
+										4,
+										5
+									],
+									"defaultValue": "5",
+									"tip": "一星：排在最上方<br>五星：排在最下方"
+								}
+							],
+							"method": "post"
+						},
+						{
+							"type": "formModal",
+							"value": "修改备注",
+							"url": "./api/v1/task-projects/1",
+							"formElements": [
+								{
+									"type": "commonTextArea",
+									"displayName": "备注",
+									"name": "comment",
+									"placeholder": "最多可填300个字"
+								}
+							],
+							"method": "post"
+						}
+					],
+					"dropdown": true
+				}
+			}
+		],
+		"header_operations": [
+			{
+				"type": "jumpUrl",
+				"value": "跳转",
+				"url": "https://www.baidu.com",
+				"method": "get"
+			}
+		],
+		"fixed_fields": {
+			"left": 1,
+			"right": 1
+		}
+	}
+}

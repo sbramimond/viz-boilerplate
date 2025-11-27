@@ -1,4 +1,5 @@
 import {Button} from 'antd';
+import {useEffect} from 'react';
 
 import useIndexStroe from '@/store/useIndexStroe';
 export default function Count() {

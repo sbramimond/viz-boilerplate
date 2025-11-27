@@ -2,6 +2,7 @@ import {Col, Row} from 'antd';
 import {useEffect, useRef} from 'react';
 
 import Count from '@/component/index/Count';
+import List from '@/component/index/List';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
@@ -114,6 +115,11 @@ export default () => {
                             }}
                         />
                     </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col span={24}>
+                    <List />
                 </Col>
             </Row>
         </>
