@@ -1,7 +1,6 @@
 import * as Three from 'three';
+import {threeChannel} from '@/messageChannel';
 import getRender from '@/render/create/render';
-
-import { threeChannel } from '@/messageChannel';
 
 let iCamera = null;
 
