@@ -8,9 +8,7 @@
         "indentStyle": "space",
         "indentWidth": 4,
         "lineEnding": "lf",
-        "lineWidth": 120,
-        "attributePosition": "auto",
-        "bracketSameLine": true
+        "lineWidth": 120
     },
     "linter": {
         "enabled": true,
@@ -56,10 +54,10 @@
             "attributePosition": "auto",
             "bracketSpacing": true,
             "arrowParentheses": "asNeeded",
-            "quoteStyle": "double",
             "jsxQuoteStyle": "double",
             "semicolons": "always",
-            "trailingCommas": "es5"
+            "trailingCommas": "es5",
+            "quoteStyle": "single"
         }
     },
     "json": {
