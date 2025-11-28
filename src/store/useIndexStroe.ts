@@ -16,7 +16,7 @@ interface DataState {
 
 export let countSlice: SliceCreator<CountState> = (set: SetState<CountState>) => ({
     count: 1,
-    increment: () => set(state => ({ count: state.count + 1 })),
+    increment: () => set((state) => ({count: state.count + 1})),
 });
 
 export let fatchSlice: SliceCreator<DataState> = (set: SetState<DataState>) => ({
@@ -24,9 +24,9 @@ export let fatchSlice: SliceCreator<DataState> = (set: SetState<DataState>) => (
     request: async () => {
         try {
             let data = await api.getDetail();
-            set({ data });
-        } catch (error) {
-            // console.error(error);
+            set({data});
+        } catch (_error) {
+
         }
     },
 });

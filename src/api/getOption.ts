@@ -24,5 +24,5 @@ export default function request<T>(url = '/', method = 'GET', payload = {}, conf
         option.data = payload;
     }
 
-    return { ...option, ...config };
+    return {...option, ...config};
 }

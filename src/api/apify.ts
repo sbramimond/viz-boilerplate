@@ -4,7 +4,7 @@ export default function apify(axios, method, list = {}) {
     let all = Object.keys(list);
     let result = {};
 
-    all.forEach(key => {
+    all.forEach((key) => {
         let url = list[key];
 
         result[key] = (...parameter) => {

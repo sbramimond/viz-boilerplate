@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 
 interface OffscreenCanvasProps {
     worker: Worker;
@@ -7,7 +7,7 @@ interface OffscreenCanvasProps {
     style?: React.CSSProperties;
 }
 
-export default function OffscreenCanvas({ worker, width, height, style }: OffscreenCanvasProps) {
+export default function OffscreenCanvas({worker, width, height, style}: OffscreenCanvasProps) {
     let canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {

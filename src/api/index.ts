@@ -9,4 +9,4 @@ import request from './request';
 
 export let api: Api<symbol, string> = request;
 
-export { default as host } from './host';
+export {default as host} from './host';

@@ -1,7 +1,7 @@
 import * as Three from 'three';
 
 export default function (canvas: HTMLCanvasElement) {
-    let { width, height } = canvas;
+    let {width, height} = canvas;
     let scene = new Three.Scene();
     let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
 

@@ -1,6 +1,6 @@
 import host from './host';
 
-let { protocol } = location;
+let {protocol} = location;
 const ROOT_URL = `${protocol}//${host}`;
 
 export let post = {

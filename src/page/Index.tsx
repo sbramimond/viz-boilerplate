@@ -1,5 +1,5 @@
-import { Col, Row } from 'antd';
-import { useEffect, useRef } from 'react';
+import {Col, Row} from 'antd';
+import {useEffect, useRef} from 'react';
 
 import Count from '@/component/index/Count';
 import List from '@/component/index/List';
@@ -27,8 +27,8 @@ export default () => {
         }
 
         let canvas = copyRef.current;
-        let { width, height } = canvas;
-        let { camera, renderer, scene } = getRender(canvas);
+        let {width, height} = canvas;
+        let {camera, renderer, scene} = getRender(canvas);
 
         renderer.setSize(width, height);
         renderer.setClearColor(0x000000, 0);

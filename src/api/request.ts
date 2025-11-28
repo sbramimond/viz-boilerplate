@@ -1,4 +1,4 @@
-import { message as iMessage } from 'antd';
+import {message as iMessage} from 'antd';
 import axios from 'axios';
 
 import apify from './apify';
@@ -23,20 +23,20 @@ let notify = (type = true, message = '') => {
 };
 
 instance.interceptors.request.use(
-    config => {
+    (config) => {
         // 处理x-silent标记
         if (config['x-silent'] === false) {
             // ui: $loading
         }
         return config;
     },
-    error => Promise.reject(error)
+    (error) => Promise.reject(error)
 );
 
 instance.interceptors.response.use(
-    response => {
-        let { status = 0 } = response;
-        let { code = 0, data = {}, msg = '' } = response.data;
+    (response) => {
+        let {status = 0} = response;
+        let {code = 0, data = {}, msg = ''} = response.data;
 
         if (status === 304) {
             response.status = 200;
@@ -57,7 +57,7 @@ instance.interceptors.response.use(
 
         return {};
     },
-    error => {
+    (error) => {
         // $load && $load.close();
 
         return Promise.reject(error.response || error);

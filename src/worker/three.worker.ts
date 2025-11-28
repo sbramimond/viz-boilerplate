@@ -4,7 +4,7 @@ import getRender from '@/render/create/render';
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 let iCamera = null;
 
-self.onmessage = async ({ data: { canvas = null } }) => {
+self.onmessage = async ({data: {canvas = null}}) => {
     if (!canvas) {
         return;
     }
@@ -13,7 +13,7 @@ self.onmessage = async ({ data: { canvas = null } }) => {
 };
 
 let createRender = (canvas: HTMLCanvasElement) => {
-    let { camera, renderer, scene } = getRender(canvas);
+    let {camera, renderer, scene} = getRender(canvas);
 
     iCamera = camera;
     renderer.setAnimationLoop(animate);
@@ -39,11 +39,11 @@ let createRender = (canvas: HTMLCanvasElement) => {
     }
 };
 
-threeChannel.onmessage = ({ data: { type = '', data = {} } }) => {
+threeChannel.onmessage = ({data: {type = '', data = {}}}) => {
     if (!iCamera) return;
 
     if (type === 'cameraUpdate') {
-        let { position = [], rotation = [] } = data;
+        let {position = [], rotation = []} = data;
 
         iCamera.position.fromArray(position);
         iCamera.rotation.fromArray(rotation);

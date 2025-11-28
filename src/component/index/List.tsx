@@ -1,5 +1,5 @@
-import { Descriptions, Table } from 'antd';
-import { useEffect } from 'react';
+import {Descriptions, Table} from 'antd';
+import {useEffect} from 'react';
 
 import useIndexStroe from '@/store/useIndexStroe';
 
@@ -45,8 +45,8 @@ const COLUMNS = [
 ];
 
 export default function Count() {
-    let request = useIndexStroe(state => state.request);
-    let data = useIndexStroe(state => state.data);
+    let request = useIndexStroe((state) => state.request);
+    let data = useIndexStroe((state) => state.data);
 
     useEffect(() => {
         request();
@@ -56,7 +56,7 @@ export default function Count() {
         <>
             <Descriptions title="Project Info">
                 {data?.fields &&
-                    Object.keys(data.fields)?.map(key => (
+                    Object.keys(data.fields)?.map((key) => (
                         <Descriptions.Item label={key} key={key}>
                             {JSON.stringify(data?.fields[key])}
                         </Descriptions.Item>
