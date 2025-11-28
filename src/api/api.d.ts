@@ -13,7 +13,7 @@ interface RequestOption {
     'x-silent'?: boolean;
     'x-message'?: boolean;
     params?: Record<string, any>;
-    data?: any;
+    data?: Record<string, any> | any;
 }
 
 interface Api<U, T> {
