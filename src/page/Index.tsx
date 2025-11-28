@@ -5,7 +5,7 @@ import Count from '@/component/index/Count';
 import List from '@/component/index/List';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
 
-let threeChannel = new BroadcastChannel('THREE:threeChannel');
+import { threeChannel } from '@/messageChannel';
 
 import getControl from '@/render/create/control';
 import getRender from '@/render/create/render';

@@ -1,7 +1,8 @@
 import * as Three from 'three';
 import getRender from '@/render/create/render';
 
-let threeChannel = new BroadcastChannel('THREE:threeChannel');
+import { threeChannel } from '@/messageChannel';
+
 let iCamera = null;
 
 self.onmessage = async ({data: {canvas = null}}) => {
