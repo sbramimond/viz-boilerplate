@@ -10,7 +10,7 @@
         "lineEnding": "lf",
         "lineWidth": 120,
         "attributePosition": "auto",
-        "bracketSameLine": false
+        "bracketSameLine": true
     },
     "linter": {
         "enabled": true,
@@ -55,7 +55,6 @@
             "quoteProperties": "asNeeded",
             "attributePosition": "auto",
             "bracketSpacing": true,
-            "bracketSameLine": false,
             "arrowParentheses": "asNeeded",
             "quoteStyle": "double",
             "jsxQuoteStyle": "double",
