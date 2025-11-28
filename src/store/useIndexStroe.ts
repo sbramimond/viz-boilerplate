@@ -25,8 +25,7 @@ export let fatchSlice: SliceCreator<DataState> = (set: SetState<DataState>) => (
         try {
             let data = await api.getDetail();
             set({data});
-        }
-        catch (_error) {}
+        } catch (_error) {}
     },
 });
 
