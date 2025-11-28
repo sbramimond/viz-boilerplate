@@ -1,1 +1,1 @@
-export let threeChannel = new BroadcastChannel('THREE:threeChannel');
+export let threeChannel = new BroadcastChannel('CHANNEL:threeChannel');
