@@ -32,7 +32,6 @@ export default async function () {
         }
 
         map.set(Symbol(key), socket);
-
     }
 
     return map;

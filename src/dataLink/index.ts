@@ -1,4 +1,4 @@
-import Worker from '@/dataLink/socket.worker.ts?worker';
+import Worker from '@/worker/socket.worker.ts?worker';
 
 let worker = new Worker();
 

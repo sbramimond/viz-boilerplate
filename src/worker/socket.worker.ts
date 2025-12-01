@@ -1,4 +1,4 @@
-import create from './create';
+import create from '@/dataLink/create';
 
 self.onmessage = async () => {
     create();
