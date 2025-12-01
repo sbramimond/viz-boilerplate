@@ -1,4 +1,4 @@
-import './socket.d'
+import './socket.d';
 
 import jsonParser from './parse/json';
 import worldParser from './parse/world';
@@ -11,13 +11,13 @@ export default {
         option: {},
         parser: worldParser,
         dataType: 'arraybuffer',
-        threshold: 80
+        threshold: 80,
     } as WebsocketPromiseOption,
     b: {
         url: `ws://${ROOT_HOST}/b`,
         option: {},
         parser: jsonParser,
         dataType: 'json',
-        threshold: 80
+        threshold: 80,
     } as WebsocketPromiseOption,
-}
+};

@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import { devtools } from 'zustand/middleware'
+import {devtools} from 'zustand/middleware';
 
 import {api} from '@/api';
 
@@ -41,4 +41,3 @@ export default create<CountState & DataState>()(
         ...fatchSlice(set, get, api),
     }))
 );
-

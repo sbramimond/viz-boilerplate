@@ -1,9 +1,9 @@
 import './socket.d';
 
-import Socket from './socket';
 import config from './config';
+import Socket from './socket';
 
-export default function() {
+export default function () {
     let map: Map<symbol, Socket> = new Map();
 
     for (let [key, value] of Object.entries(config)) {
@@ -12,7 +12,7 @@ export default function() {
             option = {},
             parser = (data: any) => data,
             dataType = 'string',
-            threshold = 80
+            threshold = 80,
         }: WebsocketPromiseOption = value;
 
         let socket = new Socket(url, option);
@@ -23,7 +23,6 @@ export default function() {
 
         map.set(Symbol(key), socket);
     }
-
 
     return map;
 }

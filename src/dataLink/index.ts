@@ -1,7 +1,6 @@
-
 import Worker from './socket.worker.ts?worker';
 
-export default function() {
+export default function () {
     let worker = new Worker();
 
     worker.postMessage('init');
