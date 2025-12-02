@@ -1,5 +1,5 @@
+import {Axios, type AxiosRequestConfig} from 'axios';
 import getOption from './getOption';
-import axios, { Axios, type AxiosRequestConfig }  from 'axios';  
 
 export default function apify(i: Axios, method: string, list = {}) {
     let all = Object.keys(list);
