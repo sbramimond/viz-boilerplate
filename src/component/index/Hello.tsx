@@ -6,7 +6,6 @@ export interface HelloProps {
 import useSocketError from '@/hook/useSocketError';
 
 export default ({compiler = '', framework = ''}: HelloProps) => {
-
     useSocketError();
     return (
         <h1>

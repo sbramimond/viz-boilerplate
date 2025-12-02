@@ -1,6 +1,6 @@
 import './socket.d';
 
-import { socketChannel } from '@/messageChannel';
+import {socketChannel} from '@/messageChannel';
 
 import config from './config';
 import Socket from './socket';

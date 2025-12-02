@@ -10,7 +10,7 @@ export default {
         url: `ws://${ROOT_HOST}/a`,
         option: {
             packMessage: <T>(data: T) => JSON.stringify(data),
-            unpackMessage: <T>(data: T) => data
+            unpackMessage: <T>(data: T) => data,
         },
         parser: worldParser,
         dataType: 'arraybuffer',
