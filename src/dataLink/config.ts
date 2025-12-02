@@ -3,7 +3,7 @@ import './socket.d';
 import jsonParser from './parse/json';
 import worldParser from './parse/world';
 
-const ROOT_HOST: string = location.hostname + ':3000';
+const ROOT_HOST: string = `${location.hostname}:3000`;
 
 export default {
     a: {
