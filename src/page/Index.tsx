@@ -102,8 +102,7 @@ export default () => {
                                 position: 'absolute',
                                 zIndex: 1,
                             }}
-                        >
-                        </canvas>
+                        ></canvas>
                         <OffscreenCanvas
                             worker={threeWorker}
                             width={400}

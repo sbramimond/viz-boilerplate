@@ -1,7 +1,10 @@
 import path from 'path';
 
 import { defineConfig } from 'vite';
+
 import react from '@vitejs/plugin-react';
+import { visualizer } from 'rollup-plugin-visualizer'
+import progress from 'vite-plugin-progress'
 
 import removeConsole from 'vite-plugin-remove-console';
 import topLevelAwait from 'vite-plugin-top-level-await';
@@ -13,6 +16,12 @@ export default defineConfig({
     publicDir: resolve('public'),
     plugins: [
         react(),
+        progress(),
+        visualizer({
+            open: true,
+            gzipSize: true,
+            brotliSize: true,
+        }),
         removeConsole({
             // exclude: ['error', 'warn'] // 保留 error 和 warn 信息，仅移除 log 等其他 console 语句
         }),
@@ -47,7 +56,7 @@ export default defineConfig({
         input: resolve('src/index.html'), // 使用根目录的index.html
         output: {
             manualChunks: {
-                react: ['react', 'react-dom', 'react-router', 'react-router-dom'],
+                    react: ['react', 'react-dom', 'react-router', 'react-router-dom'],
                     ui: ['antd'],
                     three: ['three'],
                     charts: ['echarts'],
@@ -74,21 +83,21 @@ export default defineConfig({
     },
     optimizeDeps: {
         include: ['react', 'react-dom', 'three', 'echarts'],
-        esbuildOptions: {
-            loader: {
-                '.js': 'jsx',
-                '.ts': 'tsx',
-            },
-            target: 'esnext',
-            supported: {
-                'import-meta': true,
-                'top-level-await': true,
-                'decorators': true,
-                'bigint': true,
-                'nullish-coalescing': true,
-                'logical-assignment': true,
-                'optional-catch-binding': true,
-            },
+        rolldownOptions: {
+            // loader: {
+            //     '.js': 'jsx',
+            //     '.ts': 'tsx',
+            // },
+            // target: 'esnext',
+            // supported: {
+            //     'import-meta': true,
+            //     'top-level-await': true,
+            //     'decorators': true,
+            //     'bigint': true,
+            //     'nullish-coalescing': true,
+            //     'logical-assignment': true,
+            //     'optional-catch-binding': true,
+            // },
         },
         force: true
     }
