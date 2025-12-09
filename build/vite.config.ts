@@ -55,7 +55,7 @@ export default defineConfig({
         rollupOptions: {
         input: resolve('src/index.html'), // 使用根目录的index.html
         output: {
-            manualChunks: {
+            advancedChunks: {
                     react: ['react', 'react-dom', 'react-router', 'react-router-dom'],
                     ui: ['antd'],
                     three: ['three'],
@@ -84,20 +84,7 @@ export default defineConfig({
     optimizeDeps: {
         include: ['react', 'react-dom', 'three', 'echarts'],
         rolldownOptions: {
-            // loader: {
-            //     '.js': 'jsx',
-            //     '.ts': 'tsx',
-            // },
-            // target: 'esnext',
-            // supported: {
-            //     'import-meta': true,
-            //     'top-level-await': true,
-            //     'decorators': true,
-            //     'bigint': true,
-            //     'nullish-coalescing': true,
-            //     'logical-assignment': true,
-            //     'optional-catch-binding': true,
-            // },
+
         },
         force: true
     }

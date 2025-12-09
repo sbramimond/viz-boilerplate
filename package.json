@@ -9,7 +9,7 @@
         "build": "vite build --config ./build/vite.config.ts",
         "preview": "vite preview --config ./build/vite.config.ts",
         "prepare": "husky",
-        "lint:staged": "biome check --staged --write ./src/**/*.{js,ts,tsx}",
+        "lint:staged": "biome check --staged --write ./src/**/*.{js,jsx,ts,tsx}",
         "preinstall": "npx only-allow@1.2.2 pnpm"
     },
     "keywords": [],
@@ -48,6 +48,7 @@
         "less": "^4.4.2",
         "only-allow": "^1.2.2",
         "rollup-plugin-visualizer": "^6.0.5",
+        "terser": "^5.44.1",
         "typescript": "^5.9.3",
         "vite": "8.0.0-beta.0",
         "vite-plugin-progress": "^0.0.7",
