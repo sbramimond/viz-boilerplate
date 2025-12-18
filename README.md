@@ -8,7 +8,9 @@
  - 例子中有echarts和threejs的交互的例子。
 
 ## 可以使用gltf-transfrom 来转换gltf文件
-
+```bash
+gltf-transform optimize input.glb output.glb --texture-compress webp
+```
 ## 启动
 ```bash
 pnpm dev
