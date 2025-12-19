@@ -56,10 +56,10 @@ export default () => {
             });
         });
 
-        let handleClick = (e: MouseEvent) => {
+        let handleClick = (e: MouseEvent, type = 'THREE:click') => {
             let rect = copyRef.current?.getBoundingClientRect();
             threeChannel.postMessage({
-                type: 'THREE:click',
+                type,
                 data: {
                     x: e.clientX - rect.left,
                     y: e.clientY - rect.top,
@@ -67,7 +67,12 @@ export default () => {
             });
         };
 
+        let handleDblclick = (e: MouseEvent) => {
+            handleClick(e, 'THREE:dblclick');
+        };
+
         copyRef.current.onclick = handleClick;
+        copyRef.current.ondblclick = handleDblclick;
 
         return () => {
             if (copyRef.current) {
