@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as Three from 'three';
 
 import eventHandler from '@/render/aqua/event/eventHandler';
 import getRender from '@/render/create/render';
@@ -6,16 +6,16 @@ import getRender from '@/render/create/render';
 import * as Test from '@/render/test';
 
 declare interface Iaqua {
-    renderer: THREE.WebGLRenderer;
-    scene: THREE.Scene;
-    camera: THREE.Camera;
+    renderer: Three.WebGLRenderer;
+    scene: Three.Scene;
+    camera: Three.Camera;
     update(data: any): void;
 }
 
 export default class Aqua implements Iaqua {
-    renderer: THREE.WebGLRenderer;
-    scene: THREE.Scene;
-    camera: THREE.Camera;
+    renderer: Three.WebGLRenderer;
+    scene: Three.Scene;
+    camera: Three.Camera;
     canvas: HTMLCanvasElement;
 
     constructor(canvas: HTMLCanvasElement) {
