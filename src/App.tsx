@@ -35,6 +35,14 @@ let footerStyle: React.CSSProperties = {
     backgroundColor: '#4096ff',
 };
 
+/*<dev>*/
+    console.log(`mode: development`);
+/*</dev>*/
+
+/*<prod>*/
+    console.log(`mode: production`);
+/*</prod>*/
+
 export default (): React.ReactElement => {
     return (
         <Router>

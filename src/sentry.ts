@@ -4,7 +4,7 @@ export default function sentry(
     id: string = Date.now().toString(),
     username: string = 'example_user',
     email: string = 'user@example.com'
-): void {
+): any {
     Sentry.init({
         dsn: DSN,
     });
@@ -14,4 +14,6 @@ export default function sentry(
         username,
         email,
     });
+
+    return Sentry;
 }
