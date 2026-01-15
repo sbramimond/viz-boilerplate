@@ -36,11 +36,11 @@ let footerStyle: React.CSSProperties = {
 };
 
 /*<dev>*/
-    console.log(`mode: development`);
+console.log(`mode: development`);
 /*</dev>*/
 
 /*<prod>*/
-    console.log(`mode: production`);
+console.log(`mode: production`);
 /*</prod>*/
 
 export default (): React.ReactElement => {

@@ -24,7 +24,7 @@
         // Stricter Typechecking Options
         "noUncheckedIndexedAccess": true,
         "experimentalDecorators": true,
-        "typeRoots": ["./node_modules/@types", "@type"],
+        "typeRoots": ["./node_modules/@types", "@types"],
 
         // "moduleResolution": "node10",
         "forceConsistentCasingInFileNames": true,
@@ -68,7 +68,7 @@
     ],
     "include": [
         "./src/**/*",
-        "./@type/**/*"
+        "@types/**/*"
     ],
     "ts-node": {
         "esm": true,
