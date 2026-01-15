@@ -52,7 +52,7 @@
         "terser": "^5.44.1",
         "typescript": "^5.9.3",
         "vite": "8.0.0-beta.0",
-        "vite-plugin-jdists": "^1.0.1",
+        "vite-plugin-jdists": "^1.0.2",
         "vite-plugin-progress": "^0.0.7",
         "vite-plugin-remove-console": "^2.2.0",
         "vite-plugin-top-level-await": "^1.6.0"

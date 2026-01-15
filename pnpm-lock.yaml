@@ -112,8 +112,8 @@ importers:
         specifier: 8.0.0-beta.0
         version: 8.0.0-beta.0(@types/node@25.0.8)(esbuild@0.27.2)(less@4.5.1)(terser@5.44.1)(yaml@2.8.1)
       vite-plugin-jdists:
-        specifier: ^1.0.1
-        version: 1.0.1(@types/node@25.0.8)(esbuild@0.27.2)(less@4.5.1)(rollup@4.53.3)(terser@5.44.1)(yaml@2.8.1)
+        specifier: ^1.0.2
+        version: 1.0.2(@types/node@25.0.8)(esbuild@0.27.2)(less@4.5.1)(rollup@4.53.3)(terser@5.44.1)(yaml@2.8.1)
       vite-plugin-progress:
         specifier: ^0.0.7
         version: 0.0.7(vite@8.0.0-beta.0(@types/node@25.0.8)(esbuild@0.27.2)(less@4.5.1)(terser@5.44.1)(yaml@2.8.1))
@@ -3370,8 +3370,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vite-plugin-jdists@1.0.1:
-    resolution: {integrity: sha512-y5y9XCf7C5Q8yQMBFCNvAADfo8LM5qAZXqVweJRfsi04PAc5VKmVuXbA/0o6U13LMwOzoJmiWMMCbhsP20UXmw==}
+  vite-plugin-jdists@1.0.2:
+    resolution: {integrity: sha512-Gf5GdVQNCBlG9vx1qJ0SGE+2N010uTdwW54wraaYATzYWf2V6OKXhIFh7MxQFAR9pnkLc6QHBtIOqy/Eaj4PAQ==}
 
   vite-plugin-progress@0.0.7:
     resolution: {integrity: sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==}
@@ -7032,7 +7032,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-plugin-jdists@1.0.1(@types/node@25.0.8)(esbuild@0.27.2)(less@4.5.1)(rollup@4.53.3)(terser@5.44.1)(yaml@2.8.1):
+  vite-plugin-jdists@1.0.2(@types/node@25.0.8)(esbuild@0.27.2)(less@4.5.1)(rollup@4.53.3)(terser@5.44.1)(yaml@2.8.1):
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.53.3)
       jdists: 2.2.4
