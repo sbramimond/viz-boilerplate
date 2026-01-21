@@ -7,4 +7,4 @@ export default function (): React.ReactElement {
             <p>自动驾驶可视化基础模板</p>
         </>
     );
-};
+}

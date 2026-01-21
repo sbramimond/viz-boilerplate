@@ -2,10 +2,9 @@ import {Layout} from 'antd';
 import React from 'react';
 
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-
+import AboutPage from '@/page/About/Index';
 import Hello from '@/page/Index/component/Hello';
 import IndexPage from '@/page/Index/Index';
-import AboutPage from '@/page/About/Index';
 import NotFound from '@/page/NotFound';
 
 let {Header, Footer, Content} = Layout;

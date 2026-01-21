@@ -1,17 +1,13 @@
-import {useEffect, useRef} from 'react';
 import {Col, Row} from 'antd';
-
-import Count from './component/Count';
-import List from './component/List';
+import {useEffect, useRef} from 'react';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
-
 import {threeChannel} from '@/messageChannel';
-
 import getControl from '@/render/create/control';
 import getRender from '@/render/create/render';
-
 import ChartWorker from '@/worker/chart.worker.ts?worker';
 import ThreeWorker from '@/worker/three.worker.ts?worker';
+import Count from './component/Count';
+import List from './component/List';
 
 import style from './index.module.less';
 
