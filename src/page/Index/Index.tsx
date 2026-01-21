@@ -1,8 +1,8 @@
-import {Col, Row} from 'antd';
 import {useEffect, useRef} from 'react';
+import {Col, Row} from 'antd';
 
-import Count from '@/component/index/Count';
-import List from '@/component/index/List';
+import Count from './component/Count';
+import List from './component/List';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
 
 import {threeChannel} from '@/messageChannel';

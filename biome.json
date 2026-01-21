@@ -29,7 +29,7 @@
                                 "selector": {
                                     "kind": "const"
                                 },
-                                "formats": ["CONSTANT_CASE"]
+                                "formats": ["CONSTANT_CASE", "camelCase"]
                             },
                             {
                                 "selector": {

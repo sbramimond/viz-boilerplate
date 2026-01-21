@@ -1,8 +1,11 @@
 import {Layout} from 'antd';
 import React from 'react';
+
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
-import Hello from '@/component/index/Hello';
-import IndexPage from '@/page/Index';
+
+import Hello from '@/page/Index/component/Hello';
+import IndexPage from '@/page/Index/Index';
+import AboutPage from '@/page/About/Index';
 import NotFound from '@/page/NotFound';
 
 let {Header, Footer, Content} = Layout;
@@ -25,8 +28,8 @@ let headerStyle: React.CSSProperties = {
 
 let contentStyle: React.CSSProperties = {
     minHeight: 120,
-    lineHeight: '120px',
-    color: '#fff',
+    lineHeight: '24px',
+    padding: '20px',
 };
 
 let footerStyle: React.CSSProperties = {
@@ -53,6 +56,7 @@ export default (): React.ReactElement => {
                 <Content style={contentStyle}>
                     <Routes location={location} key={location.pathname}>
                         <Route path="/" element={<IndexPage />} />
+                        <Route path="/about" element={<AboutPage />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Content>
