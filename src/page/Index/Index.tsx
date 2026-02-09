@@ -9,7 +9,7 @@ import ThreeWorker from '@/worker/three.worker.ts?worker';
 import Count from './component/Count';
 import List from './component/List';
 
-import style from './index.module.less';
+import style from './Index.module.less';
 
 let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();

@@ -98,7 +98,7 @@ export default defineConfig(({mode}) => {
             'global': 'globalThis', // 将 global 指向 globalThis
         },
         server: {
-            port: 8080,
+            port: 8888,
             open: true,
             host: true,
             proxy: {
