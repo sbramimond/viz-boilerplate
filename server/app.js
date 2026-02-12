@@ -1,9 +1,11 @@
 import express, {request} from 'express';
 import expressWs from 'express-ws';
+import ExpressSse from 'express-sse';
 
 import getDetailJson from './mock/getDetail.json' with { type: 'json' };
 
 let app = express();
+let sse = new ExpressSse(['initial']);
 
 expressWs(app);
 
@@ -32,6 +34,12 @@ app.ws('/b', ws => {
 app.get('/apis/getDetail', (req, res) => {
     res.send(getDetailJson, 200);
 });
+
+app.get('/stream', sse.init);
+
+setInterval(() => {
+    sse.send(Date.now(), 'sse-example-message');
+}, 1000);
 
 app.listen(3000, () => {
     console.log('Express服务器启动成功，监听端口3000');

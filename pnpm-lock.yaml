@@ -81,6 +81,9 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      express-sse:
+        specifier: ^1.0.0
+        version: 1.0.0
       express-ws:
         specifier: ^5.0.2
         version: 5.0.2(express@5.2.1)
@@ -2122,6 +2125,10 @@ packages:
   expect@30.2.0:
     resolution: {integrity: sha512-u/feCi0GPsI+988gU2FLcsHyAHTU0MX1Wg68NhAnN7z/+C5wqG+CY8J53N9ioe8RXgaoz0nBR/TYMf3AycUuPw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
+
+  express-sse@1.0.0:
+    resolution: {integrity: sha512-ny3nCXjrWwQki8edZe0DwuXjLbw0ga3pc0CZX19VOB0GKuUnlIH2fqPBwTJcGHZPtmjJ2EVNPVeCgORpX6Nsrw==}
+    engines: {node: '>=16.0.0'}
 
   express-ws@5.0.2:
     resolution: {integrity: sha512-0uvmuk61O9HXgLhGl3QhNSEtRsQevtmbL94/eILaliEADZBHZOQUAiHFrGPrgsjikohyrmSG5g+sCfASTt0lkQ==}
@@ -5552,6 +5559,8 @@ snapshots:
       jest-message-util: 30.2.0
       jest-mock: 30.2.0
       jest-util: 30.2.0
+
+  express-sse@1.0.0: {}
 
   express-ws@5.0.2(express@5.2.1):
     dependencies:
