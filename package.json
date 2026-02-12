@@ -1,6 +1,6 @@
 {
     "name": "viz-boilerplate",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "自动驾驶可视化基础模板",
     "type": "module",
     "scripts": {
@@ -13,7 +13,13 @@
         "preinstall": "npx only-allow@1.2.2 pnpm"
     },
     "keywords": [],
-    "author": "",
+    "author": "enix@foxmail.com",
+    "homepage": "https://github.com/sbramimond/viz-boilerplate",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sbramimond/viz-boilerplate.git"
+    },
+    "readme": "https://github.com/sbramimond/viz-boilerplate#readme.md",
     "license": "ISC",
     "dependencies": {
         "antd": "^6.2.0",
