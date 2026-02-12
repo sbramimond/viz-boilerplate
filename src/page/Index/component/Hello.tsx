@@ -12,7 +12,7 @@ export default ({compiler = '', framework = ''}: HelloProps) => {
 
     let [message, setMessage] = useState('');
 
-    sse<string>(`http://${location.hostname}:3000/stream`, 'sse-message', (data) => {
+    sse<string>(`http://${location.hostname}:3000/stream`, 'sse-example-message', (data) => {
         setMessage(data);
     });
 
